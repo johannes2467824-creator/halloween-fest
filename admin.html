@@ -2,437 +2,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#100b16">
-  <title>Halloween | Admin</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at top, #382044, #100b16 65%);
-      color: #fff5ec;
-      font: 16px Arial, sans-serif;
-      min-height: 100vh;
-      padding: 24px 16px;
-    }
-
-    .wrap {
-      max-width: 720px;
-      margin: auto;
-    }
-
-    h1 {
-      color: #f47b20;
-      letter-spacing: 1px;
-    }
-
-    h2 {
-      font-size: 19px;
-    }
-
-    .muted {
-      color: #b6a5c3;
-    }
-
-    .card {
-      background: #21162b;
-      border: 1px solid #503451;
-      border-radius: 18px;
-      padding: 22px;
-      margin: 15px 0;
-    }
-
-    input {
-      background: #35273d;
-      border: 1px solid #57435e;
-      color: white;
-      padding: 14px;
-      border-radius: 10px;
-      width: 100%;
-      margin: 6px 0 12px;
-      font-size: 16px;
-    }
-
-    button {
-      background: #f47b20;
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #170b0a;
-    }
-
-    button:disabled {
-      opacity: .5;
-    }
-
-    .small {
-      font-size: 12px;
-    }
-
-    .secondary {
-      background: #45314c;
-      color: white;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .stat {
-      background: #35273d;
-      padding: 18px 8px;
-      text-align: center;
-      border-radius: 12px;
-    }
-
-    .num {
-      font-size: 30px;
-      font-weight: 900;
-      color: #f47b20;
-    }
-
-    .guest {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      border-top: 1px solid #503451;
-      padding: 13px 0;
-    }
-
-    .guest button {
-      font-size: 12px;
-      padding: 9px;
-    }
-
-    .guest span {
-      display: block;
-    }
-
-    .guest small {
-      color: #b6a5c3;
-    }
-
-    .top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .error {
-      color: #ff9e9e;
-    }
-
-    select {
-      background: #35273d;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #57435e;
-    }
-
-    @media(max-width:420px) {
-      .num {
-        font-size: 25px;
-      }
-
-      .stat {
-        font-size: 12px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100b16">
+<title>Halloween | Admin</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:radial-gradient(ellipse at top,#382044,#100b16 65%);
+  color:#fff5ec;
+  font:16px Arial,sans-serif;
+  min-height:100vh;
+  padding:24px 16px;
+}
+.wrap{max-width:850px;margin:auto}
+h1{color:#f47b20;letter-spacing:1px}
+h2{font-size:19px}
+.muted{color:#b6a5c3}
+.card{
+  background:#21162b;
+  border:1px solid #503451;
+  border-radius:18px;
+  padding:22px;
+  margin:15px 0;
+}
+input{
+  background:#35273d;
+  border:1px solid #57435e;
+  color:white;
+  padding:14px;
+  border-radius:10px;
+  width:100%;
+  margin:6px 0 12px;
+  font-size:16px;
+}
+button{
+  background:#f47b20;
+  border:0;
+  border-radius:10px;
+  padding:12px 16px;
+  font-weight:bold;
+  cursor:pointer;
+  color:#170b0a;
+}
+button:disabled{opacity:.5}
+.small{font-size:12px}
+.secondary{background:#45314c;color:white}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.stat{
+  background:#35273d;
+  padding:18px 8px;
+  text-align:center;
+  border-radius:12px;
+}
+.num{font-size:30px;font-weight:900;color:#f47b20}
+.guest{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-top:1px solid #503451;
+  padding:13px 0;
+}
+.guest button{font-size:12px;padding:9px}
+.guest span{display:block}
+.guest small{color:#b6a5c3}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.error{color:#ff9e9e}
+select{
+  background:#35273d;
+  color:white;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #57435e;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:14px;
+}
+.media{
+  background:#35273d;
+  border-radius:12px;
+  padding:10px;
+  min-width:0;
+}
+.media img,.media video{
+  width:100%;
+  height:170px;
+  object-fit:contain;
+  background:#130c19;
+  border-radius:8px;
+}
+.media p{overflow-wrap:anywhere;font-size:12px}
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.actions button{
+  font-size:12px;
+  padding:8px 10px;
+  border-radius:8px;
+}
+[hidden]{display:none!important}
+@media(max-width:420px){
+  .num{font-size:25px}
+  .stat{font-size:12px}
+}
+</style>
 </head>
-
 <body>
-  <main class="wrap">
 
-    <div class="top">
-      <h1>🎃 PARTY CONTROL</h1>
-      <button id="logout" class="secondary" hidden>
-        Log out
+<main class="wrap">
+  <div class="top">
+    <h1>🎃 PARTY CONTROL</h1>
+    <button id="logout" class="secondary" hidden>
+      Log out
+    </button>
+  </div>
+
+  <p class="muted">Private live guest dashboard</p>
+
+  <section id="loginCard" class="card">
+    <h2>Admin sign in</h2>
+
+    <form id="loginForm">
+      <label>
+        Email
+        <input id="email" type="email"
+               autocomplete="username" required>
+      </label>
+
+      <label>
+        Password
+        <input id="password" type="password"
+               autocomplete="current-password" required>
+      </label>
+
+      <button id="loginButton" type="submit">
+        LOG IN
       </button>
-    </div>
+    </form>
+  </section>
 
-    <p class="muted">Private live guest dashboard</p>
+  <section id="dashboard" hidden>
 
-    <!-- ADMIN LOGIN -->
-    <section id="loginCard" class="card">
-      <h2>Admin sign in</h2>
-
-      <form id="loginForm">
-        <label>
-          Email
-          <input
-            id="email"
-            type="email"
-            autocomplete="username"
-            required
-          >
-        </label>
-
-        <label>
-          Password
-          <input
-            id="password"
-            type="password"
-            autocomplete="current-password"
-            required
-          >
-        </label>
-
-        <button id="loginButton" type="submit">
-          LOG IN
-        </button>
-      </form>
-    </section>
-
-    <!-- ADMIN DASHBOARD -->
-    <section id="dashboard" hidden>
-
-      <div class="stats">
-
-        <div class="stat">
-          <div class="num" id="inside">0</div>
-          Inside now
-        </div>
-
-        <div class="stat">
-          <div class="num" id="arrivals">0</div>
-          Total arrivals
-        </div>
-
-        <div class="stat">
-          <div class="num" id="left">0</div>
-          Checked out
-        </div>
-
+    <div class="stats">
+      <div class="stat">
+        <div class="num" id="inside">0</div>
+        Inside now
       </div>
 
-      <!-- GUEST LIST -->
-      <section class="card">
+      <div class="stat">
+        <div class="num" id="arrivals">0</div>
+        Total arrivals
+      </div>
 
-        <div class="top">
-          <h2>Guest list</h2>
+      <div class="stat">
+        <div class="num" id="left">0</div>
+        Checked out
+      </div>
+    </div>
 
-          <select id="filter">
-            <option value="inside">Inside</option>
-            <option value="all">All</option>
-            <option value="left">Checked out</option>
-          </select>
-        </div>
+    <section class="card">
+      <div class="top">
+        <h2>Guest list</h2>
+        <select id="filter">
+          <option value="inside">Inside</option>
+          <option value="all">All</option>
+          <option value="left">Checked out</option>
+        </select>
+      </div>
 
-        <p class="muted small">
-          Updates every 5 seconds.
-          You can manually check guests out.
-        </p>
+      <p class="muted small">
+        Updates every 5 seconds.
+        You can manually check guests out.
+      </p>
 
-        <div id="guests"></div>
-
-      </section>
+      <div id="guests"></div>
     </section>
 
-    <p id="status" role="status" class="muted"></p>
+    <section class="card">
+      <div class="top">
+        <h2>📸 PARTY GALLERY</h2>
+        <button id="reloadGallery" class="secondary">
+          Refresh
+        </button>
+      </div>
 
-  </main>
+      <p class="muted small">
+        Private photos and videos.
+        New uploads appear every 10 seconds.
+        Download or delete files below.
+      </p>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <div id="gallery" class="gallery"></div>
+    </section>
 
-  <script>
-    // SUPABASE SETTINGS
-    const SUPABASE_URL = "https://vyoossjhezicpiaboarx.supabase.co";
-    const SUPABASE_ANON_KEY = "sb_publishable_kPAvsMkdvMbmQt27uTnxgw_Ks2277pb";
+  </section>
 
-    const db = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
+  <p id="status" role="status" class="muted"></p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL =
+  "https://vyoossjhezicpiaboarx.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "sb_publishable_kPAvsMkdvMbmQt27uTnxgw_Ks2277pb";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+const $ = id => document.getElementById(id);
+
+let records = [];
+let loading = false;
+let mediaLoading = false;
+let mediaPaths = "";
+
+function msg(text,bad=false) {
+  $("status").textContent = text;
+  $("status").className = bad ? "error" : "muted";
+}
+
+function loggedIn(yes) {
+  $("loginCard").hidden = yes;
+  $("dashboard").hidden = !yes;
+  $("logout").hidden = !yes;
+}
+
+function formatTime(value) {
+  return new Date(value).toLocaleString(undefined,{
+    day:"numeric",
+    month:"short",
+    hour:"2-digit",
+    minute:"2-digit"
+  });
+}
+
+function render() {
+  const inside = records.filter(
+    guest => !guest.checked_out_at
+  );
+
+  const left = records.filter(
+    guest => guest.checked_out_at
+  );
+
+  $("inside").textContent = inside.length;
+  $("arrivals").textContent = records.length;
+  $("left").textContent = left.length;
+
+  const filter = $("filter").value;
+
+  const filtered = records.filter(guest => {
+    if (filter === "all") return true;
+    if (filter === "inside") return !guest.checked_out_at;
+    return !!guest.checked_out_at;
+  });
+
+  const root = $("guests");
+  root.replaceChildren();
+
+  if (!filtered.length) {
+    const p = document.createElement("p");
+    p.className = "muted";
+    p.textContent = "No guests in this view.";
+    root.append(p);
+  }
+
+  for (const guest of filtered) {
+    const row = document.createElement("div");
+    row.className = "guest";
+
+    const info = document.createElement("div");
+    const name = document.createElement("span");
+    const time = document.createElement("small");
+
+    name.textContent =
+      guest.first_name + " " + guest.last_name;
+
+    time.textContent = guest.checked_out_at
+      ? "Left " + formatTime(guest.checked_out_at)
+      : "Arrived " + formatTime(guest.checked_in_at);
+
+    info.append(name,time);
+    row.append(info);
+
+    if (!guest.checked_out_at) {
+      const button = document.createElement("button");
+      button.textContent = "Check out";
+
+      button.onclick = async () => {
+        button.disabled = true;
+
+        const {error} = await db.rpc(
+          "party_admin_checkout",
+          {p_id:guest.id}
+        );
+
+        if (error) {
+          msg(error.message,true);
+          button.disabled = false;
+        } else {
+          await refresh();
+        }
+      };
+
+      row.append(button);
+    }
+
+    root.append(row);
+  }
+}
+
+async function refresh() {
+  if (loading || $("dashboard").hidden) return;
+  loading = true;
+
+  try {
+    const {data,error} = await db.rpc(
+      "party_admin_guests"
     );
 
-    const $ = id => document.getElementById(id);
+    if (error) throw error;
 
-    let records = [];
-    let loading = false;
+    records = data || [];
+    render();
 
-    function msg(message, bad = false) {
-      $("status").textContent = message;
-      $("status").className = bad ? "error" : "muted";
+    msg("Updated " + new Date().toLocaleTimeString());
+  } catch (error) {
+    msg("Could not load guests: " + error.message,true);
+  } finally {
+    loading = false;
+  }
+}
+
+async function refreshGallery() {
+  if (mediaLoading || $("dashboard").hidden) return;
+  mediaLoading = true;
+
+  try {
+    const {data,error} = await db.rpc(
+      "party_v3_admin_media"
+    );
+
+    if (error) throw error;
+
+    const files = data || [];
+    const signature = files.map(file => file.path).join("|");
+
+    if (signature === mediaPaths) return;
+
+    mediaPaths = signature;
+
+    const root = $("gallery");
+    root.replaceChildren();
+
+    if (!files.length) {
+      const p = document.createElement("p");
+      p.className = "muted";
+      p.textContent = "No photos or videos yet.";
+      root.append(p);
     }
 
-    function loggedIn(yes) {
-      $("loginCard").hidden = yes;
-      $("dashboard").hidden = !yes;
-      $("logout").hidden = !yes;
-    }
+    for (const file of files) {
+      const {data:signed,error:signError} =
+        await db.storage
+          .from("halloween-media")
+          .createSignedUrl(file.path,600);
 
-    function formatTime(value) {
-      return new Date(value).toLocaleString(undefined, {
-        day: "numeric",
-        month: "short",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
-    }
-
-    function render() {
-      const inside = records.filter(
-        guest => !guest.checked_out_at
-      );
-
-      const left = records.filter(
-        guest => guest.checked_out_at
-      );
-
-      $("inside").textContent = inside.length;
-      $("arrivals").textContent = records.length;
-      $("left").textContent = left.length;
-
-      const filter = $("filter").value;
-
-      const filtered = records.filter(guest => {
-        if (filter === "all") return true;
-        if (filter === "inside") return !guest.checked_out_at;
-        return !!guest.checked_out_at;
-      });
-
-      const root = $("guests");
-      root.replaceChildren();
-
-      if (!filtered.length) {
-        const p = document.createElement("p");
-        p.className = "muted";
-        p.textContent = "No guests in this view.";
-        root.append(p);
+      if (signError) {
+        console.error(signError);
+        continue;
       }
 
-      for (const guest of filtered) {
-        const row = document.createElement("div");
-        row.className = "guest";
+      const box = document.createElement("div");
+      box.className = "media";
 
-        const info = document.createElement("div");
+      const isVideo =
+        (file.mime_type || "").startsWith("video/") ||
+        /\.(mp4|mov|webm)$/i.test(file.path);
 
-        const name = document.createElement("span");
-        name.textContent =
-          guest.first_name + " " + guest.last_name;
+      const preview = document.createElement(
+        isVideo ? "video" : "img"
+      );
 
-        const time = document.createElement("small");
+      preview.src = signed.signedUrl;
 
-        time.textContent = guest.checked_out_at
-          ? "Left " + formatTime(guest.checked_out_at)
-          : "Arrived " + formatTime(guest.checked_in_at);
+      if (isVideo) {
+        preview.controls = true;
+        preview.preload = "metadata";
+      } else {
+        preview.alt = "Party photo";
+      }
 
-        info.append(name, time);
-        row.append(info);
+      const caption = document.createElement("p");
+      caption.textContent =
+        file.guest_name + " • " +
+        formatTime(file.created_at);
 
-        if (!guest.checked_out_at) {
-          const button = document.createElement("button");
-          button.textContent = "Check out";
+      const actions = document.createElement("div");
+      actions.className = "actions";
 
-          button.onclick = async () => {
-            button.disabled = true;
+      const download = document.createElement("button");
+      download.textContent = "Download";
 
-            const { error } = await db.rpc(
-              "party_admin_checkout",
-              { p_id: guest.id }
-            );
+      download.onclick = async () => {
+        download.disabled = true;
 
-            if (error) {
-              msg(error.message, true);
-              button.disabled = false;
-            } else {
-              await refresh();
-            }
-          };
+        try {
+          const {data,error} = await db.storage
+            .from("halloween-media")
+            .download(file.path);
 
-          row.append(button);
+          if (error) throw error;
+
+          const url = URL.createObjectURL(data);
+          const a = document.createElement("a");
+
+          a.href = url;
+          a.download = file.path.split("/").pop();
+
+          document.body.append(a);
+          a.click();
+          a.remove();
+
+          setTimeout(() => URL.revokeObjectURL(url),60000);
+        } catch (error) {
+          msg("Download failed: " + error.message,true);
+        } finally {
+          download.disabled = false;
         }
+      };
 
-        root.append(row);
-      }
+      const del = document.createElement("button");
+      del.className = "secondary";
+      del.textContent = "Delete";
+
+      del.onclick = async () => {
+        if (!confirm("Permanently delete this file?")) return;
+
+        del.disabled = true;
+
+        const {error} = await db.storage
+          .from("halloween-media")
+          .remove([file.path]);
+
+        if (error) {
+          msg("Delete failed: " + error.message,true);
+          del.disabled = false;
+        } else {
+          mediaPaths = "";
+          await refreshGallery();
+        }
+      };
+
+      actions.append(download,del);
+      box.append(preview,caption,actions);
+      root.append(box);
     }
+  } catch (error) {
+    msg("Gallery error: " + error.message,true);
+  } finally {
+    mediaLoading = false;
+  }
+}
 
-    async function refresh() {
-      if (loading || $("dashboard").hidden) return;
+$("filter").onchange = render;
 
-      loading = true;
+$("reloadGallery").onclick = () => {
+  mediaPaths = "";
+  refreshGallery();
+};
 
-      try {
-        const { data, error } = await db.rpc(
-          "party_admin_guests"
-        );
+$("loginForm").onsubmit = async event => {
+  event.preventDefault();
 
-        if (error) throw error;
+  $("loginButton").disabled = true;
 
-        records = data || [];
-        render();
+  const {error} = await db.auth.signInWithPassword({
+    email:$("email").value,
+    password:$("password").value
+  });
 
-        msg("Updated " + new Date().toLocaleTimeString());
+  $("loginButton").disabled = false;
 
-      } catch (error) {
-        msg(
-          "Could not load guests: " + error.message,
-          true
-        );
-      } finally {
-        loading = false;
-      }
-    }
+  if (error) {
+    msg(error.message,true);
+    return;
+  }
 
-    $("filter").onchange = render;
+  loggedIn(true);
+  await Promise.all([refresh(),refreshGallery()]);
+};
 
-    // LOGIN
-    $("loginForm").onsubmit = async event => {
-      event.preventDefault();
+$("logout").onclick = async () => {
+  await db.auth.signOut();
 
-      $("loginButton").disabled = true;
+  records = [];
+  mediaPaths = "";
+  $("gallery").replaceChildren();
 
-      const { error } = await db.auth.signInWithPassword({
-        email: $("email").value,
-        password: $("password").value
-      });
+  loggedIn(false);
+  msg("Signed out");
+};
 
-      $("loginButton").disabled = false;
+(async () => {
+  const {data} = await db.auth.getSession();
 
-      if (error) {
-        msg(error.message, true);
-        return;
-      }
+  if (data.session) {
+    loggedIn(true);
+    await Promise.all([refresh(),refreshGallery()]);
+  }
+})();
 
-      loggedIn(true);
-      await refresh();
-    };
-
-    // LOGOUT
-    $("logout").onclick = async () => {
-      await db.auth.signOut();
-
-      records = [];
-      loggedIn(false);
-
-      msg("Signed out");
-    };
-
-    // RESTORE SESSION
-    (async () => {
-      const { data } = await db.auth.getSession();
-
-      if (data.session) {
-        loggedIn(true);
-        await refresh();
-      }
-    })();
-
-    // AUTO REFRESH EVERY 5 SECONDS
-    setInterval(refresh, 5000);
-  </script>
+setInterval(refresh,5000);
+setInterval(refreshGallery,10000);
+</script>
 </body>
 </html>
